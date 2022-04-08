@@ -1,0 +1,60 @@
+<style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color:rgb(30, 112, 219);
+    }
+    
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 15px 16px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    
+    </style>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/album">View Albums</a>
+    <a href="/upload">Upload Picture</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href='/friends'> Find Friends</a>
+    <a href='/searchbytag'> Search by Tags</a>
+    <a href='/viewtag'> View Tags</a>
+    <a href='/viewallfriends'> View All Friends</a>
+    <a href='/searchbycomment'>Search by Comment</a>
+    <a href='/recphoto'>Recommended Photos</a>
+    <a href="/logout">Logout</a>
+    <a href='/delete'> Delete your account</a>
+  </div>
+<h1>
+    TOP TEN CONTRIBUTION SCORES
+</h1>
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+{% if leaders %}
+
+<h2>Here are your Leaders</h2>
+    <table style="width:75%">
+        <th> First Name</th>
+        <th> Last Name</th>
+        <th> Contribution Score</th>
+    {% for leader in leaders %}
+    <tr>
+        <td><center>{{leader[1]}}</center></td>
+        <td><center>{{leader[2]}}</center></td>
+        <td><center>{{leader[3]}}</center></td>
+    </tr>
+    {% endfor %}
+        </table>
+{% endif %}

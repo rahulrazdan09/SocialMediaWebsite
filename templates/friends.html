@@ -1,0 +1,90 @@
+<style>
+  body {
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color:rgb(30, 112, 219);
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  
+  </style>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/album">View Albums</a>
+    <a href="/upload">Upload Picture</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href='/friends'> Find Friends</a>
+    <a href='/searchbytag'> Search by Tags</a>
+    <a href='/viewtag'> View Tags</a>
+    <a href='/viewallfriends'> View All Friends</a>
+    <a href='/searchbycomment'>Search by Comment</a>
+    <a href='/recphoto'>Recommended Photos</a>
+    <a href="/logout">Logout</a>
+    <a href='/delete'> Delete your account</a>
+  </div>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<center>
+<h1> Find Friends!</h1>
+
+<form method="post">
+  <input type="text" placeholder="First Name (REQUIRED)" name="firstname" required='true'><br><br>
+  <input type="text" placeholder="Last Name (REQUIRED)" name="lastname" required='true'>
+  <br><br>
+  <input type="text" placeholder="Hometown" name="hometown">
+  <br><br>
+  <input type="submit" />
+</form>
+{% if searches %}
+    <h2>Search Results:</h2>
+    <table style="width:75%">
+      <th> First Name</th>
+      <th> Last Name</th>
+      <th> Hometown</th>
+      <th> Gender </th>
+      <th> Add Friend </th>
+  {% for search in searches %}
+  <tr>
+      <td><center>{{search[1]}}</center></td>
+      <td><center>{{search[2]}}</center></td>
+      <td><center>{{search[3]}}</center></td>
+      <td><center>{{search[4]}}</center></td>
+      <td><Center><a href='/addorremove?userid={{search[0]}}'>Add or Remove </a>
+  </tr>
+  {% endfor %}
+      </table>
+{% endif %}
+
+<h1> Recommended Friends</h1>
+{% if recs %}
+    <h2>Search Results:</h2>
+    <table style="width:75%">
+      <th> First Name</th>
+      <th> Last Name</th>
+      <th> Hometown</th>
+      <th> Gender </th>
+      <th> Add or remove Friend </th>
+  {% for rec in recs %}
+  <tr>
+      <td><center>{{rec[1]}}</center></td>
+      <td><center>{{rec[2]}}</center></td>
+      <td><center>{{rec[3]}}</center></td>
+      <td><center>{{rec[4]}}</center></td>
+      <td><Center><a href='/addorremove?userid={{rec[0]}}'>Add or Remove </a>
+  </tr>
+  {% endfor %}
+      </table>
+{% endif %}
+</center>

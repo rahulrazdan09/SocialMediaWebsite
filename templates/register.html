@@ -1,0 +1,77 @@
+<!-- author ben lawson balawson@bu.edu -->
+<style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color:rgb(30, 112, 219);
+    }
+    
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 15px 16px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    
+    </style>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/album">View Albums</a>
+    <a href="/upload">Upload Picture</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href='/friends'> Find Friends</a>
+    <a href='/searchbytag'> Search by Tags</a>
+    <a href='/viewtag'> View Tags</a>
+    <a href='/viewallfriends'> View All Friends</a>
+    <a href='/searchbycomment'>Search by Comment</a>
+    <a href='/recphoto'>Recommended Photos</a>
+    <a href="/logout">Logout</a>
+    <a href='/delete'> Delete your account</a>
+  </div>
+  
+<head>
+    <title>Create an account!</title>
+</head>
+{%if not supress%}
+<h1> Email already in use! Use another one or <a href="/login">login</a></h1>
+{% endif %}
+    <body>
+        <div class="title">
+            <h1>Enter your information below</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="{{ url_for('register_user') }}">
+                <label for="firstname">Enter your First Name:</label>
+                <input type="text" name="firstname" required="TRUE"/><br />
+
+                <label for="lastname">Enter your Last Name:</label>
+                <input type="text" name="lastname" required="TRUE" /><br />
+
+                <label for="email">Enter your email:</label>
+                <input type="email" name="email" required="TRUE"/><br />
+
+                <label for="birthdate">Enter your birthdate:</label>
+                <input type="date" name="birthdate" required="TRUE" /><br />
+
+                <label for="hometown">Enter your hometown:</label>
+                <input type="text" name="hometown" /><br />
+
+                <label for="gender">Enter your Gender (M or F):</label>
+                <select name="gender" id="switch">
+                  <option value=></option>
+                  <option value=M>M</option>
+                  <option value=F>F</option>
+                </select> <br>
+                <label for="password">Enter password:</label>
+                <input type="password" name="password" required="TRUE"/><br />
+                <input type="submit" />
+            </form>
+         </div>
+    </body>
+<a href='/'>Home</a>

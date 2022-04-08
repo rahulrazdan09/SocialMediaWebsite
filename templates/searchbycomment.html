@@ -1,0 +1,66 @@
+<style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color:rgb(30, 112, 219);
+    }
+    
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 15px 16px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    
+    </style>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/album">View Albums</a>
+    <a href="/upload">Upload Picture</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href='/friends'> Find Friends</a>
+    <a href='/searchbytag'> Search by Tags</a>
+    <a href='/viewtag'> View Tags</a>
+    <a href='/viewallfriends'> View All Friends</a>
+    <a href='/searchbycomment'>Search by Comment</a>
+    <a href='/recphoto'>Recommended Photos</a>
+    <a href="/logout">Logout</a>
+    <a href='/delete'> Delete your account</a>
+  </div>
+  <center>
+  <h1> Search By Comment</h1>
+  
+  <form method="post">
+    <input type="text" placeholder="Enter Comment Text Exactly" name="commenttext"><br><br>
+    <br><br>
+    <input type="submit" />
+  </form>
+  {% if users %}
+
+  <h2>Here are the Users with the Text</h2>
+      <table style="width:75%">
+          <th> Comment Text</th>
+          <th> First Name</th>
+          <th> Last Name</th>
+          <th> Count </th>
+          <th> Add Friend </th>
+      {% for user in users %}
+      <tr>
+          <td><center>{{user[6]}}</center></td>
+          <td><center>{{user[1]}}</center></td>
+          <td><center>{{user[2]}}</center></td>
+          <td><center>{{user[7]}}</center></td>
+          <td><Center><a href='/addorremove?userid={{user[0]}}'>Add or Remove </a></td>
+            
+      </tr>
+      {% endfor %}
+          </table>
+  {% endif %}
+
+  </center>

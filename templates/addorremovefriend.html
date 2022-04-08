@@ -1,0 +1,47 @@
+<style>
+  body {
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color:rgb(30, 112, 219);
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  
+  </style>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/album">View Albums</a>
+    <a href="/upload">Upload Picture</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href='/friends'> Find Friends</a>
+    <a href='/searchbytag'> Search by Tags</a>
+    <a href='/viewtag'> View Tags</a>
+    <a href='/viewallfriends'> View All Friends</a>
+    <a href='/searchbycomment'>Search by Comment</a>
+    <a href='/recphoto'>Recommended Photos</a>
+    <a href="/logout">Logout</a>
+    <a href='/delete'> Delete your account</a>
+  </div>
+
+<center> {% if message %}
+  <h1>{{message}}!</h1>
+{% endif %}
+
+<form method="POST">
+    <select name="switch" id="switch">
+      <option value=>{{formmessage}}</option>
+    </select>
+    <input type="submit" value="Submit">
+</form>
+</center>

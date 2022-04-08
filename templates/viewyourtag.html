@@ -1,0 +1,64 @@
+<style>
+    div.hgap {
+      float: left;
+      overflow: hidden;
+      height: 1px;
+      width: 0px;
+    }
+      body {
+        margin: 0;
+        font-family: Arial;
+      }
+      
+      .topnav {
+        overflow: hidden;
+        background-color:rgb(30, 112, 219);
+      }
+      
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 15px 16px;
+        text-decoration: none;
+        font-size: 13px;
+      }
+      
+      </style>
+      
+      <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/album">View Albums</a>
+        <a href="/upload">Upload Picture</a>
+        <a href="/leaderboard">Leaderboard</a>
+        <a href='/friends'> Find Friends</a>
+        <a href='/searchbytag'> Search by Tags</a>
+        <a href='/viewtag'> View Tags</a>
+        <a href='/viewallfriends'> View All Friends</a>
+        <a href='/searchbycomment'>Search by Comment</a>
+        <a href='/recphoto'>Recommended Photos</a>
+        <a href="/logout">Logout</a>
+        <a href='/delete'> Delete your account</a>
+      </div>
+<center>
+    <h1> View Tags</h1>
+<form method="POST">
+    <label for="switch">Which option would you like to choose?:</label>
+    <select name="switch" id="switch">
+      <option value="View my Tags">View my Tags</option>
+      <option value="View All Tags">View All Tags</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+{% if searches %}
+
+      <h2>Search Results:</h2>
+    {% for search in searches %}
+    <center><a href='/tagforphoto?keyword={{search[0]}}&option={{option}}'>{{search[0]}}</a></center>
+    {% endfor %}
+
+{% endif %}
+</center>

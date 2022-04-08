@@ -1,0 +1,78 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<!doctype html>
+<style>
+div.hgap {
+  float: left;
+  overflow: hidden;
+  height: 1px;
+  width: 0px;
+}
+  body {
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color:rgb(30, 112, 219);
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  
+  </style>
+  
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/album">View Albums</a>
+    <a href="/upload">Upload Picture</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href='/friends'> Find Friends</a>
+    <a href='/searchbytag'> Search by Tags</a>
+    <a href='/viewtag'> View Tags</a>
+    <a href='/viewallfriends'> View All Friends</a>
+    <a href='/searchbycomment'>Search by Comment</a>
+    <a href='/recphoto'>Recommended Photos</a>
+    <a href="/logout">Logout</a>
+    <a href='/delete'> Delete your account</a>
+  </div>
+<center>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+<h1>Welcome to Photoshare!</h1>
+<title>Photoshare</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% endif %}
+
+{% if photos %}
+<h2>Here are your photos</h2>
+    <ul>
+    {% for photo in photos %}
+
+        <li>
+          <a href='/likepicture?photoid={{photo[0]}}'>Likes: {{photo[3]}} OR Like Photo OR View Likes</a><pre></pre>Caption:{{photo[2]}}<pre><a href='/viewcomment?photoid={{photo[0]}}'>View/Write Comments</a></pre><br>
+          <a href='/tagsforphoto?photoid={{photo[0]}}'>View Tags</a><br><br>
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[1]).decode("ascii") }}'/></li>
+        
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if message is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p> Go to <a href='/profile'>profile?</a></p>
+{% endif %}
+
+
+</center>
+
